@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDoS attack trends and insights</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="../pages/page5.html">Quantum DDoS Protector</a></li>
+    </ul>
+    <center>
+        <h1>2022 in review: DDoS attack trends and insights</h1>
+        <p>As organizations strengthen their defenses and take a more proactive approach to protection, attackers are
+            adapting their techniques and increasing the sophistication of their operations. Cybercrime continues to
+            rise with the industrialization of the cybercrime economy providing cybercriminals with greater access to
+            tools and infrastructure.
+
+            In the first half of 2022, the cyberthreat landscape was focused around the war in Ukraine and the rise of
+            nation state attacks and hacktivism across the world. In February, Ukraine was hit with the largest
+            distributed denial of service (DDoS) attack ever in the country’s history, impacting government websites and
+            banking web services. As the conflict continued, there was a ripple effect to western countries, including
+            the UK, US, and Germany. UK financial services firms experienced a significant increase in DDoS attacks as
+            they were heavily targeted by nation state attackers and hacktivists looking to disrupt Ukraine’s allies.
+
+            Hacktivism continued to be rampant throughout the year, including Taiwanese websites experiencing outages in
+            August 2022 due to DDoS attacks ahead of House Speaker Nancy Pelosi’s arrival in Taiwan. Beyond attacks with
+            political motives, DDoS attacks also impacted a wide range of industries. In particular, the gaming industry
+            continued to be highly targeted. In March 2022, a DDoS attack brought down the game servers of Among Us,
+            preventing players from accessing the popular multiplayer game for a few days. A new version of RapperBot
+            (heavily inspired by the Mirai botnet) was used in the second half of 2022 to target game servers running
+            Grand Theft Auto: San Andreas.
+
+            In this blog, we share trends and insights into DDoS attacks we observed and mitigated throughout 2022.</p>
+        <img src="../assets/images/Featured-image-1024x683.jpg" alt="DDOS Featured Image" width="500px">
+        <h2>2022 DDoS attack trends
+            Large volume of attacks during the holiday season</h2>
+        <p>In 2022, Microsoft mitigated an average of 1,435 attacks per day. The maximum number of attacks in a day
+            recorded was 2,215 attacks on September 22, 2022. The minimum number of attacks in a day was 680 on August
+            22, 2022. In total, we mitigated upwards of 520,000 unique attacks against our global infrastructure during
+            2022.</p>
+        <img src="../assets/images/Figure-1.-Attack-volume-1.png" alt="ddos analise" width="600px">
+        <p>This year, we saw a lower volume of attacks in June through August and a high volume of attacks during the
+            holiday season until the last week of December. This is in line with attacks trends we have seen in the last
+            few years, except for 2021 where there were fewer attacks during the holiday season. In May, we mitigated a
+            3.25 terabits per second (TBps) attack in Azure, the largest attack in 2022.
+
+            DDoS protection tip: Make sure to avoid having a single virtual machine backend so it is less likely to get
+            overwhelmed. Azure DDoS Protection covers scaled out costs incurred for all resources during an attack, so
+            configure autoscaling to absorb the initial burst of attack traffic while mitigation kicks in.</p>
+        <h2>TCP attacks remain the most common attack vector</h2>
+        <p>TCP attacks were the most frequent form of DDoS attack encountered in 2022, comprising 63% of all attack
+            traffic, which includes all TCP attack vectors: TCP SYN, TCP ACK, TCP floods, etc. Since TCP remains the
+            most common networking protocol, we expect TCP-based attacks to continue to make up most DDoS attacks. UDP
+            attacks were significant as well with 22% of all attacks (combined for UDP flood and UDP amplification
+            attacks), while Packet anomaly attacks made up 15% of attacks.</p>
+        <img src="../assets/images/tcp.png" alt="tcp" width="500px">
+        <p>Out of UDP flood attacks, spoofed floods consumed most of the attack volume with 53%. The remaining attack
+            vectors were reflected amplification attacks, with the main types being CLDAP, NTP, and DNS.
+
+            We observed TCP reflected amplification attacks becoming more prevalent, with attacks on Azure resources
+            using diverse types of reflectors and attack vectors. This new attack vector is taking advantage of improper
+            TCP stack implementation in middleboxes, such as firewalls and deep packet inspection devices, to elicit
+            amplified responses that can reach infinite amplification in some cases. As an example, in April 2022, we
+            monitored a reflected amplified SYN+ACK attack on an Azure resource in Asia. The attack reached 30 million
+            packets per second (pps) and lasted 15 seconds. Attack throughput was not very high, however there were 900
+            reflectors involved, each with retransmissions, resulting in high pps rate that can bring down the host and
+            other network infrastructure.
+
+            DDoS protection tip: To protect against UDP and TCP attacks, we recommend using Azure DDoS Protection. For
+            gaming customers, consider using A10 virtual appliances and Azure Gateway Load Balancers to help with
+            volume-based attacks.</p>
+        <h1>Shorter attacks continue to be popular</h1>
+        <img src="../assets/images/Figure-3.-Attack-duration-3.png" alt="shorter attack" width="600px">
+        <p>Shorter duration attacks were more commonly observed this past year, with 89% of attacks lasting less than
+            one hour. Attacks spanning one to two minutes made up 26% of the attacks seen this year. This is not a new
+            trend as attacks that are shorter require less resources and are more challenging to mitigate for legacy
+            DDoS defenses. Attackers often use multiple short attacks over the span of multiple hours to make the most
+            impact while using the fewest number of resources.
+
+            Short attacks take advantage of the time it takes systems to detect the attack and for mitigation to kick
+            in. While time to mitigation may only take one or two minutes, the information from those short attacks can
+            make it into the backend of services, impacting legitimate usage. If a short attack can cause a reboot of
+            the systems, this can then trigger multiple internal attacks as every legitimate user tries to reconnect at
+            the same time.
+
+            DDoS protection tip: Use Azure Web Application Firewall to protect web applications.</p>
+        <h2>US, India, and East Asia top regions targeted by attacks</h2>
+        <img src="../assets/images/Figure-4.-Attack-destinations-2.png" alt="Figure" width="700px">
+    </center>
+    <img src="./assets/images/tutorials-freak-logo.svg" alt="">
+    <ul>
+        <li><a href="../pages/page1.html" target="_blank">| Privacy Policy |</a></li>
+        <li><a href="../pages/page2.html" target="_blank">| Terms & Conditions |</a></li>
+        <li><a href="../pages/page3.html" target="_blank">| Contact Us |</a></li>
+    </ul>
+    <h1>References</h1>
+    <ul>
+
+            <li><a href="https://venturebeat.com/security/ddos-attack-was-largest-ever-in-ukraine-russia-suspected/" target="_blank">ddos-attack-was-largest-ever-in-ukraine-russia-suspected</a></li>
+            <li><a href="https://www.finextra.com/newsarticle/40955/uk-finance-suffers-surge-in-ddos-attacks" target="_blank">uk-finance-suffers-surge-in-ddos-attacks</a></li>
+            <li><a href="https://www.nbcnews.com/tech/security/taiwanese-websites-hit-ddos-attacks-pelosi-begins-visit-rcna41144">taiwanese-websites-hit-ddos-attacks-pelosi-begins-visit-rcna41144</a></li>
+
+    </ul>
+</body>
+
+</html>
